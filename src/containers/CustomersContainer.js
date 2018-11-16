@@ -6,25 +6,7 @@ import CustomersActions from '../components/CustomersActions';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {fetchCustomers} from '../redux/actions/fetchCustomers'
-
-const customers = [
-    {
-        "dni": "1",
-        "name": "Johann",
-        "age": 27
-    },
-    {
-        "dni": "2",
-        "name": "Johann",
-        "age": 27
-    },
-    {
-        "dni": "3",
-        "name": "Johann",
-        "age": 27
-    }
-]
-
+import {getCustomers} from '../redux/selectors/customers'
 
 
 class CustomersContainer extends Component {
@@ -58,7 +40,7 @@ class CustomersContainer extends Component {
             <div>
                 <AppFrame 
                     header={'Listado de clientes'} 
-                    body={this.renderBody(customers)} 
+                    body={this.renderBody(this.props.customers)} 
                 ></AppFrame>
             </div>
         );
@@ -67,12 +49,17 @@ class CustomersContainer extends Component {
 
 CustomersContainer.protoType = {
     fetchCustomers: PropTypes.func.isRequired,
+    customers: PropTypes.array.isRequired,
 }
 
-const mapDispatchToProps = dispatch => (
-  {
-      fetchCustomers: () => dispatch(fetchCustomers())
-  }  
-)
+CustomersContainer.defaultProps = {
+    customers: [ ]
+}
 
-export default withRouter(connect(null,mapDispatchToProps)(CustomersContainer));
+
+const mapStateToProps = (state) => ({
+    customers: getCustomers(state)
+})
+
+
+export default withRouter(connect(mapStateToProps,{fetchCustomers})(CustomersContainer));
