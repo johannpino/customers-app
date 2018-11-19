@@ -1,0 +1,20 @@
+{
+  "customers": [
+    {
+        "dni": "1",
+        "name": "Johann",
+        "age": 27
+    },
+    {
+        "dni": "2",
+        "name": "Johann",
+        "age": 27
+    },
+    {
+        "dni": "3",
+        "name": "Johann",
+        "age": 27
+    }
+]
+
+}
