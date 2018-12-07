@@ -1,20 +1,22 @@
 {
   "customers": [
     {
-        "dni": "1",
-        "name": "Johann",
-        "age": 27
+      "id": "1",
+      "dni": "1",
+      "name": "Johann Pino ",
+      "age": 22
     },
     {
-        "dni": "2",
-        "name": "Johann",
-        "age": 27
+      "id": "2",
+      "dni": "2",
+      "name": "Paulette Pino",
+      "age": 4
     },
     {
-        "dni": "3",
-        "name": "Johann",
-        "age": 27
+      "id": "3",
+      "dni": "3",
+      "name": "Vicente Pino",
+      "age": 3
     }
-]
-
+  ]
 }

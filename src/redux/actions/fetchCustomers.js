@@ -2,8 +2,10 @@
 import {createAction} from 'redux-actions'
 import { apiGet } from '../../api';
 import { urlCustomers } from '../../api/urls';
+import { FETCH_CUSTOMERS } from '../constants';
 
-export const FETCH_CUSTOMERS = 'FETCH_CUSTOMERS'
+
+
 
 
 
