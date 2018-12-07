@@ -8,6 +8,8 @@ import CustomerEdit from '../components/CustomerEdit'
 import CustomerData from '../components/CustomerData'
 import {fetchCustomers} from '../redux/actions/fetchCustomers'
 import {updateCustomer} from '../redux/actions/updateCustomer'
+import {deleteCustomer} from '../redux/actions/deleteCustomer'
+
 
 class CustomerContainer extends Component {
 
@@ -30,21 +32,39 @@ class CustomerContainer extends Component {
     handleOnSubmitSuccess = () => {
         this.handleOnBack()
     }
+
+    handleOnDelete = (id) => {
+        console.log(id);
+        this.props.deleteCustomer(id).then(v => this.handleOnBack())
+        
+    }
+
+    renderCustomerControl = (idEdit, isDelete) => {
+        if(this.props.customer){
+            const CustomerControl = idEdit ? CustomerEdit : CustomerData
+            return (
+                <CustomerControl {...this.props.customer} 
+                onSubmit={this.handleSubmit} 
+                onSubmitSuccess={this.handleOnSubmitSuccess} 
+                onBack={this.handleOnBack}
+                isDeleteAllow={!!isDelete}
+                onDelete={this.handleOnDelete}    
+            />
+            )
+        }                
+        return null
+    } 
     
     renderBody = () => (
         <Route path='/customers/:dni/edit' children={
-            ({match}) => {
-                if(this.props.customer){
-                    const CustomerControl = match ? CustomerEdit : CustomerData
-                    return (
-                        <CustomerControl {...this.props.customer} 
-                        onSubmit={this.handleSubmit} 
-                        onSubmitSuccess={this.handleOnSubmitSuccess} 
-                        onBack={this.handleOnBack}/>
-                    )
-                }                
-                return null
-            }
+            ({match: isEdit}) => (
+                <Route 
+                    path='/customers/:dni/del' 
+                    children={
+                        ({match: isDelete}) => this.renderCustomerControl(isEdit,isDelete)                        
+                    } 
+                />
+            )
                 
         } />
     )
@@ -72,4 +92,4 @@ const mapStateToProps = (state,props) => ({
     customer: getCustomerByDni(state,props)
 })
 
-export default connect(mapStateToProps,{ fetchCustomers,updateCustomer })(CustomerContainer);
+export default connect(mapStateToProps,{ fetchCustomers,updateCustomer, deleteCustomer })(CustomerContainer);

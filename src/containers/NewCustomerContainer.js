@@ -12,10 +12,10 @@ class NewCustomerContainer extends Component {
     }
 
     handleOnSubmitSuccess = () => {
-        this.onBack()
+        this.handleOnBack()
     }
 
-    onBack = () => {
+    handleOnBack = () => {
         this.props.history.goBack()
     }
 

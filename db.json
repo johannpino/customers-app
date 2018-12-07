@@ -1,28 +1,10 @@
 {
   "customers": [
     {
-      "id": "1",
-      "dni": "1",
-      "name": "Johann Pino Vergara",
-      "age": 27
-    },
-    {
-      "id": "2",
-      "dni": "2",
-      "name": "Paulette Pino",
-      "age": 4
-    },
-    {
-      "id": "3",
-      "dni": "3",
-      "name": "Vicente Pino",
-      "age": 3
-    },
-    {
-      "name": "Nancy Gonzalez",
-      "dni": "1111",
-      "age": 30,
-      "id": "F~tmTXj"
+      "name": "Johann Pino",
+      "dni": "0000",
+      "age": 22,
+      "id": 1
     }
   ]
 }
