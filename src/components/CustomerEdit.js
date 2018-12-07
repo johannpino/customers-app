@@ -5,9 +5,6 @@ import { setPropsAsInitial } from '../helpers/setPropsAsInitial'
 import CustomersActions from './CustomersActions'
 import {Prompt} from 'react-router-dom'
 
-// const isRequired = value => (
-//     !value && "Este campo es requirido"
-// )
 
 const isNumber = value => (
     isNaN(Number(value)) && "El campo debe ser un numero"

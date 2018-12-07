@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import CustomerEdit from '../components/CustomerEdit';
 import AppFrame from '../components/AppFrame'
 import {connect} from 'react-redux'
 import { withRouter } from 'react-router-dom';
+import {insertCustomer} from '../redux/actions/insertCustomer'
 
 class NewCustomerContainer extends Component {
 
-    handleSubmit = () => {
-
+    handleSubmit = values => {
+        this.props.insertCustomer(values)
     }
 
     handleOnSubmitSuccess = () => {
-
+        this.onBack()
     }
 
     onBack = () => {
-        this.props.history.goback()
+        this.props.history.goBack()
     }
 
     renderBody = () => {
@@ -38,8 +38,5 @@ class NewCustomerContainer extends Component {
     }
 }
 
-NewCustomerContainer.propTypes = {
 
-};
-
-export default withRouter(connect(null,null)(NewCustomerContainer));
+export default withRouter(connect(null,{ insertCustomer })(NewCustomerContainer));

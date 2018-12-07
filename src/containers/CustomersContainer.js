@@ -12,7 +12,9 @@ import {getCustomers} from '../redux/selectors/customers'
 class CustomersContainer extends Component {
 
     componentDidMount() {
-        this.props.fetchCustomers()
+        if(this.props.customers.length === 0){
+            this.props.fetchCustomers()
+        } 
     }
      
 
@@ -26,7 +28,7 @@ class CustomersContainer extends Component {
             <CustomersList 
                 customers={customers} 
                 urlPath={'customers/'} 
-            ></CustomersList>
+            ></CustomersList> 
             <CustomersActions>
                 <button onClick={this.handleAddNew} >
                     Nuevo Cliente
